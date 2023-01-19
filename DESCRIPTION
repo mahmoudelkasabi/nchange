@@ -4,12 +4,12 @@ Title: Executes sample size calculations for longitudinal surveys
 Version: 0.1.0
 Author: Mahmoud Elkasabi
 Maintainer: Mahmoud Elkasabi <mahmoudelkasabi@gmail.com>
-Description: Executes a sequential algorithm for sample size calculation to measure net and gross changes 
-concurrently in longitudinal surveys.
+Description: Executes a sequential algorithm for sample size calculation to measure net and gross changes concurrently in longitudinal surveys.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
 Depends: R(>= 3.4.0)
-RoxygenNote: 7.1.1
+Imports: stats, utils
+RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 Suggests: knitr, rmarkdown

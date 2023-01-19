@@ -1,15 +1,15 @@
 #' Executes a sequential algorithm for sample size calculations for longitudinal surveys
 #'
 #' \code{seqmeans} executes a sequential algorithm for sample size calculation to measure net and gross changes concurrently in longitudinal surveys.
-#' \code{seqmeans} deals with changes in means
+#' \code{seqmeans} deals with changes in means.
 #'
 #' @author Mahmoud Elkasabi.
 #'
-#' @param theta -
+#' @param theta - 0 ≤ θ < 1 to set the lower bound of non-panel sample
 #'
 #' @param rho - unit-level correlation between x and y
 #'
-#' @param deff -
+#' @param deff - design effect to adjust sample size for complex surveys
 #'
 #' @param S2x - unit variance of analysis variable x in sample t
 #'
@@ -23,7 +23,7 @@
 #'
 #' @param power - desired power of the test of the net change
 #'
-#' @param S2o
+#' @param S2o - common unit variance of analysis variable in panel sample
 #'
 #' @param alt.gross - should the test of the gross change be "1-sided" or "2-sided"
 #'
@@ -32,6 +32,9 @@
 #' @param sig.level.gross - significance level of the hypothesis test of the gross change
 #'
 #' @param pow.gross - desired power of the test of the gross change
+#'
+#' @import stats
+#' @import utils
 #'
 #' @examples
 #' # Calculate sample size of panel and fresh samples to estimate newt and gross changes
@@ -115,7 +118,7 @@ seqmeans <- function (theta = 0.5, rho, deff,
   RESULTS <- cbind.data.frame(samp1, samp2,samp3, n11, pow.gross,  row.names = NULL)
 
   names(RESULTS) <- c("n", "Power", "Gamma", "n11", "Power")
-  RESULTS_last <- tail(RESULTS, n=1)
+  RESULTS_last <- utils::tail(RESULTS, n=1)
   names(RESULTS_last) <- c("n", "Power", "Gamma", "n11", "Power")
 
   structure(list("sequential power analysis" = RESULTS,

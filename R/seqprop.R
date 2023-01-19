@@ -1,13 +1,13 @@
 #' Executes a sequential algorithm for sample size calculations for longitudinal surveys
 #'
 #' \code{seqprop} executes a sequential algorithm for sample size calculation to measure net and gross changes concurrently in longitudinal surveys.
-#' \code{seqprop} deals with changes in proportions
+#' \code{seqprop} deals with changes in proportions.
 #'
 #' @author Mahmoud Elkasabi.
 #'
-#' @param theta -
+#' @param theta - 0 ≤ θ < 1 to set the lower bound of non-panel sample
 #'
-#' @param deff -
+#' @param deff - design effect to adjust sample size for complex surveys
 #'
 #' @param P1 - proportion in survey t
 #'
@@ -16,8 +16,6 @@
 #' @param PXY - proportion in the overlap has the characteristic in both samples
 #'
 #' @param alt - should the test of the net change be "1-sided" or "2-sided"
-#'
-#' @param del - size of the net change between the means to be detected
 #'
 #' @param sig.level - significance level of the hypothesis test of the net change
 #'
@@ -31,27 +29,27 @@
 #'
 #' @param alt.gross - should the test of the gross change be "1-sided" or "2-sided"
 #'
-#' @param del.gross - size of the gross change between the means to be detected
-#'
 #' @param sig.level.gross - significance level of the hypothesis test of the gross change
 #'
 #' @param pow.gross - desired power of the test of the gross change
+#'
+#' @import stats
+#' @import utils
 #'
 #' @examples
 #' # Calculate sample size of panel and fresh samples to estimate newt and gross changes
 #'
 #' sample_sequence <- seqprop(
 #' theta = 0.5,
-#' rho = 0.9,
 #' deff = 1,
 #' P1= 0.5,
-#' P2= 0.7,
+#' P2= 0.65,
 #' PXY= 0.45,
 #' alt= "one.sided",
 #' sig.level = 0.05,
 #' power = 0.80,
 #' P1.gross= 0.5,
-#' P2.gross= 0.75,
+#' P2.gross= 0.7,
 #' PXY.gross= 0.45,
 #' alt.gross="one.sided",
 #' sig.level.gross = 0.05,
@@ -119,7 +117,7 @@ seqprop <- function (theta = 0.5, deff,
     RESULTS <- cbind.data.frame(samp1, samp2,samp3, n11, pow.gross,  row.names = NULL)
 
     names(RESULTS) <- c("n", "Power", "Gamma", "n11", "Power")
-    RESULTS_last <- tail(RESULTS, n=1)
+    RESULTS_last <- utils::tail(RESULTS, n=1)
     names(RESULTS_last) <- c("n", "Power", "Gamma", "n11", "Power")
 
     structure(list("sequential power analysis" = RESULTS,
