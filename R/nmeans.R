@@ -1,6 +1,7 @@
-# Helper function: Find n11 to measure gross change
-nmeans <- function (S2o, rho, deff, alt.gross, del.gross, sig.level.gross, pow.gross)
-{
+# nmeans: a helper function to find n11 to measure gross change in means
+# Mahmoud Elkasabi
+
+nmeans <- function (S2o, rho, deff, alt.gross, del.gross, sig.level.gross, pow.gross) {
 
   if (alt.gross == "one.sided")
     za <- qnorm(1 - sig.level.gross)

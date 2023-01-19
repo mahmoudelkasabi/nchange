@@ -1,6 +1,7 @@
-# Helper function: power of detecting net change achieved using n
-powermeans <- function (S2x, S2y, n, rho, gamma, deff, alt, del, sig.level = sig.level)
-{
+# powermeans: a helper function to find the power of detecting net change in means achieved using n
+# Mahmoud Elkasabi
+
+powermeans <- function (S2x, S2y, n, rho, gamma, deff, alt, del, sig.level = sig.level){
   if (alt == "one.sided")
     za <- qnorm(1 - sig.level)
   if (alt == "two.sided")

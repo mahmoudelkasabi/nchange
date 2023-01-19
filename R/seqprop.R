@@ -1,5 +1,65 @@
-## proportions *******************************************************************************
-# Main function: Sequential assessment for power of detecting net change achieved using n
+#' Executes a sequential algorithm for sample size calculations for longitudinal surveys
+#'
+#' \code{seqprop} executes a sequential algorithm for sample size calculation to measure net and gross changes concurrently in longitudinal surveys.
+#' \code{seqprop} deals with changes in proportions
+#'
+#' @author Mahmoud Elkasabi.
+#'
+#' @param theta -
+#'
+#' @param deff -
+#'
+#' @param P1 - proportion in survey t
+#'
+#' @param P2 - proportion in survey t+1
+#'
+#' @param PXY - proportion in the overlap has the characteristic in both samples
+#'
+#' @param alt - should the test of the net change be "1-sided" or "2-sided"
+#'
+#' @param del - size of the net change between the means to be detected
+#'
+#' @param sig.level - significance level of the hypothesis test of the net change
+#'
+#' @param power - desired power of the test of the net change
+#'
+#' @param P1.gross - proportion in survey t among panel sample
+#'
+#' @param P2.gross - proportion in survey t+1 among panel sample
+#'
+#' @param PXY.gross - proportion in the overlap has the characteristic in both panel samples
+#'
+#' @param alt.gross - should the test of the gross change be "1-sided" or "2-sided"
+#'
+#' @param del.gross - size of the gross change between the means to be detected
+#'
+#' @param sig.level.gross - significance level of the hypothesis test of the gross change
+#'
+#' @param pow.gross - desired power of the test of the gross change
+#'
+#' @examples
+#' # Calculate sample size of panel and fresh samples to estimate newt and gross changes
+#'
+#' sample_sequence <- seqprop(
+#' theta = 0.5,
+#' rho = 0.9,
+#' deff = 1,
+#' P1= 0.5,
+#' P2= 0.7,
+#' PXY= 0.45,
+#' alt= "one.sided",
+#' sig.level = 0.05,
+#' power = 0.80,
+#' P1.gross= 0.5,
+#' P2.gross= 0.75,
+#' PXY.gross= 0.45,
+#' alt.gross="one.sided",
+#' sig.level.gross = 0.05,
+#' pow.gross = 0.80)
+#'
+#' @return panel sample size and overall sample size
+#'
+#' @export
 seqprop <- function (theta = 0.5, deff,
                      P1,P2, PXY, alt, sig.level = 0.05, power = 0.80,
                      P1.gross,P2.gross,PXY.gross,alt.gross, sig.level.gross = 0.05, pow.gross = 0.80)

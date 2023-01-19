@@ -1,17 +1,68 @@
-
-# A framework for sample size calculation for longitudinal surveys
-# Main function: Sequential assessment for power of detecting net change achieved using n
-seqmeans <- function (theta = 0.5, rho, deff, min.fresh=0.1,
+#' Executes a sequential algorithm for sample size calculations for longitudinal surveys
+#'
+#' \code{seqmeans} executes a sequential algorithm for sample size calculation to measure net and gross changes concurrently in longitudinal surveys.
+#' \code{seqmeans} deals with changes in means
+#'
+#' @author Mahmoud Elkasabi.
+#'
+#' @param theta -
+#'
+#' @param rho - unit-level correlation between x and y
+#'
+#' @param deff -
+#'
+#' @param S2x - unit variance of analysis variable x in sample t
+#'
+#' @param S2y - unit variance of analysis variable y in sample t+1
+#'
+#' @param alt - should the test of the net change be "1-sided" or "2-sided"
+#'
+#' @param del - size of the net change between the means to be detected
+#'
+#' @param sig.level - significance level of the hypothesis test of the net change
+#'
+#' @param power - desired power of the test of the net change
+#'
+#' @param S2o
+#'
+#' @param alt.gross - should the test of the gross change be "1-sided" or "2-sided"
+#'
+#' @param del.gross - size of the gross change between the means to be detected
+#'
+#' @param sig.level.gross - significance level of the hypothesis test of the gross change
+#'
+#' @param pow.gross - desired power of the test of the gross change
+#'
+#' @examples
+#' # Calculate sample size of panel and fresh samples to estimate newt and gross changes
+#'
+#' sample_sequence <- seqmeans(
+#' theta = 0.5,
+#' rho = 0.9,
+#' deff = 1,
+#' S2x= 100,
+#' S2y= 75,
+#' alt= "one.sided",
+#' del=3,
+#' sig.level = 0.05,
+#' power = 0.80,
+#' S2o=200,
+#' alt.gross="one.sided",
+#' del.gross=3,
+#' sig.level.gross = 0.05,
+#' pow.gross = 0.80)
+#'
+#' @return panel sample size and overall sample size
+#'
+#' @export
+seqmeans <- function (theta = 0.5, rho, deff,
                        S2x, S2y, alt, del, sig.level = 0.05, power = 0.80,
-                       S2o, alt.gross, del.gross, sig.level.gross = 0.05, pow.gross = 0.80)
-{
+                       S2o, alt.gross, del.gross, sig.level.gross = 0.05, pow.gross = 0.80){
 
   if (!(theta >= 0 & theta < 1))
     stop("theta must be in (0,1].\n")
   if (rho < 0 | rho > 1)
     stop("rho must be in [0,1].\n")
-  if (min.fresh <= 0 | min.fresh >= 1)
-    stop("min.fresh must be in [0,1].\n")
   alt.ok <- alt %in% c("one.sided", "two.sided")
   if (!alt.ok)
     stop("alt must be either 'one.sided' or 'two.sided'.\n ")

@@ -1,8 +1,8 @@
-## proportions *******************************************************************************
-# Helper function: Find n11 to measure gross change
+# nprop: a helper function to find n11 to measure gross change in proportions
+# Mahmoud Elkasabi
+
 nprop <- function (P1.gross=P1.gross,P2.gross=P2.gross,PXY.gross=PXY.gross,
-                   deff, alt.gross, sig.level.gross, pow.gross)
-{
+                   deff, alt.gross, sig.level.gross, pow.gross){
 
   if (alt.gross == "one.sided")
     za <- qnorm(1 - sig.level.gross)

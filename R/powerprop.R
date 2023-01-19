@@ -1,7 +1,7 @@
-## proportions *******************************************************************************
-# Helper function: power of detecting net change achieved using n
-powerprop <- function (P1,P2, PXY, n, gamma, deff, alt, sig.level = sig.level)
-{
+# powerprop: a helper function to find the power of detecting net change in proportions achieved using n
+# Mahmoud Elkasabi
+
+powerprop <- function (P1,P2, PXY, n, gamma, deff, alt, sig.level = sig.level){
   if (alt == "one.sided")
     za <- qnorm(1 - sig.level)
   if (alt == "two.sided")

@@ -1,11 +1,15 @@
 Package: nchange
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Executes sample size calculations for longitudinal surveys
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Mahmoud Elkasabi
+Maintainer: Mahmoud Elkasabi <mahmoudelkasabi@gmail.com>
+Description: Executes a sequential algorithm for sample size calculation to measure net and gross changes 
+concurrently in longitudinal surveys.
+License: GPL-2
 Encoding: UTF-8
 LazyData: true
+Depends: R(>= 3.4.0)
+RoxygenNote: 7.1.1
+VignetteBuilder: knitr
+Suggests: knitr, rmarkdown
